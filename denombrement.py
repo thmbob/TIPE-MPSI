@@ -1,3 +1,9 @@
+### Objectif : mettre au point une formule qui calcule la proba théorique qu'un graphe soit connexe on procède par dénombrement via une formule récursive
+### Pour limiter le nombre d'appel on a recours à la programmation dynamique. Les nombres en jeu sont rapidement très gros
+### On dénombre le nombre de graphe à n sommet et k arêtes (noté C(n, k)) qui sont connexes en utilisant la formule suivante
+### C(n, k) = \sum_{i=1}^{n} \sum_{a=0}^{k} C(i, a) * \binom{n-1}{i-1} * \binom{\binom{n-i}{2}}{k-a}
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -41,7 +47,6 @@ tab = denombr(30)
 
 def C(n, k) :
     return tab[n][k]
-5
 
 def dicho(f, a, b, eps) :
     t = 0
