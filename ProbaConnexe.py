@@ -1,4 +1,5 @@
 ### Objectif générer des matrices de façon aléatoires et determiner si elles sont connexes
+### Stocker les résultats dans un fichier
 
 import numpy.random as rd
 import matplotlib.pyplot as plt
