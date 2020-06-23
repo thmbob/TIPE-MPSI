@@ -1,3 +1,5 @@
+### Objectif : Programme qui permet de comparer la complexité temporelle des deux algorithmes (matrice d'adjacence et glouton) de façon expérimentale
+
 import Graphe as G
 import time
 import numpy.random as rd
