@@ -1,4 +1,9 @@
 ###Objectif : Définir un ensemble de fonctions permettant de manipuler des graphes
+### Le programme 1 repose sur le calcul de matrices d'adjacence su graphe en utilisant les deux propriétés suivantes :
+###    (1) La matrice d'adjacence M d'un graphe élevée à la puissance k donne les chemins de longueur k entre deux sommets (M^k[i][j] est le nombre de cheemins de longueur k entre i et j
+###    (2) Dans un graphe connexe à n sommets, il existe un chemin de longueur inférieur à n-1 entre deux sommets
+###    Pour un graphe à n sommets, il suffit ainsi de calculer la somme des puissances de sa matrice d'adjacence (jusqu'à n-1) : si elle contient des 0 alors le graphe n'est pas connexe
+### Le programme 2 est un algorithme glouton, il parcourt en profondeur le graphe pour déterminer sa connexité
 
 import numpy as np
 import numpy.linalg
@@ -64,31 +69,9 @@ def composantesConnexes(graphe) :   #Renvoie la liste des composantes connexes d
                     pointsNonTraites.remove(points[i])
     return composantes
 
-def composantesConnexes2(graphe) :   #Marche pas
-    if len(graphe[2]) == 0 :
-        graphe[2] = matriceAdjacente(graphe)
-    matAdj = graphe[2]
-    n = ordre(graphe)
-    
-    matChemins = np.dot((np.identity(n) - np.linalg.matrix_power(matAdj, n)), (np.linalg.inv(np.identity(n) - matAdj)))
-    
-    composantes = []
-    points = graphe[0]
-    pointsNonTraites = graphe[0].copy()
-    for p in range(n) :
-        if points[p] in pointsNonTraites :
-            composantes.append([points[p]])
-            for i in range(p+1, n) :
-                if matChemins[p][i] != 0 :
-                    composantes[-1].append(points[i])
-                    pointsNonTraites.remove(points[i])
-    return composantes
-
 def estConnexe(graphe) :
     return len(composantesConnexes(graphe)) == 1
 
-def estConnexe2(graphe) :
-    return len(composantesConnexes2(graphe)) == 1
 
 def voisin(p, graphe) :
     matAdj = graphe[2]
