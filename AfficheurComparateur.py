@@ -1,4 +1,4 @@
-### Objectif : Programme qui permet de comparer la complexité temporelle des deux algorithmes (matrice d'adjacence et glouton) de façon expérimentale
+### Objectif : programme affichant les performances mesurées par le programme chrono
 
 import time
 import numpy.random as rd
